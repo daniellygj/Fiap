@@ -16,7 +16,7 @@ public enum FormaDePagamento {
 
     CREDITO {
         public double percentualDesconto() {
-            return 0;
+            throw new IllegalArgumentException("Para cartão de crédito, não é permitido desconto!");
         }
     };
 

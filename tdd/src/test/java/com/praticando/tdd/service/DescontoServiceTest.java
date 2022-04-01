@@ -30,6 +30,6 @@ public class DescontoServiceTest {
         Assertions.assertThatThrownBy(() -> {
                     descontoService.calcularDesconto(1000.00, FormaDePagamento.CREDITO);
                 }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("Para cart„o de crÈdito, n„o È permitido desconto!");
+                .hasMessage("Para cart√£o de cr√©dito, n√£o √© permitido desconto!");
     }
 }
