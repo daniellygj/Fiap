@@ -18,16 +18,18 @@ public class DescontoServiceTest {
     @Test
     void deveConcederDescontoQuandoPagamentoAVistaNoDebito() {
         DescontoService descontoService = new DescontoService();
-        double desconto = descontoService.calcularDesconto( 1000.00, FormaDePagamento.DEBITO);
+        double desconto = descontoService.calcularDesconto(1000.00, FormaDePagamento.DEBITO);
         double descontoEsperado = 60.00;
         Assertions.assertThat(desconto).isEqualTo(descontoEsperado);
     }
 
     @Test
-    void naoDeveConcederDescontoQuandoPagamentoNoCredito() {
+    void deveLancarExcecaoQuandoPagamentoNoCredito() {
         DescontoService descontoService = new DescontoService();
-        double desconto = descontoService.calcularDesconto( 1000.00, FormaDePagamento.CREDITO);
-        double descontoEsperado = 0.00;
-        Assertions.assertThat(desconto).isEqualTo(descontoEsperado);
+
+        Assertions.assertThatThrownBy(() -> {
+                    descontoService.calcularDesconto(1000.00, FormaDePagamento.CREDITO);
+                }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Para cartão de crédito, não é permitido desconto!");
     }
 }
