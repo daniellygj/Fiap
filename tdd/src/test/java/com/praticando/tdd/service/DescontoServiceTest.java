@@ -1,14 +1,12 @@
 package com.praticando.tdd.service;
 
+import com.praticando.tdd.enums.FormaDePagamento;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class DescontoServiceTest {
 
     @Test
-
-    @Test
-
     void deveConcederDescontoQuandoPagamentoAVistaEmDinheiro() {
 
         DescontoService descontoService = new DescontoService();
